@@ -21,26 +21,35 @@
         <section class="latest-items section-padding fix">
             <div class="container">
                 <div class="row">
+
+                <?php
+                include('../dashboard/connect.php');
+                $query = "SELECT * FROM `products`";
+                $result = mysqli_query($con, $query);
+                while ($row = mysqli_fetch_assoc($result)) {
+            
+                ?>
                     <div class="col-lg-4 col-md-6 col-sm-6">
                         <div class="properties properties2 pb-40">
                             <div class="properties-card">
                                 <div class="properties-img">
-                                    <a href="#"><img src="../dashboard/img" alt="" fetchpriority="high" decoding="sync"></a>
+                                    <a href="#"><img src="../dashboard/img/<?php echo $row['image']; ?>" alt="" fetchpriority="high" decoding="sync"></a>
                                     <div class="img-cap">
                                         <span>Add to cart</span>
                                     </div>
                                 </div>
                                 <div class="properties-caption properties-caption2">
-                                    <h3><a href="#">Cashmere Tank + Bag</a></h3>
+                                    <h3><a href="#"><?php echo $row['product_name']; ?></a></h3>
                                     <div class="properties-footer">
                                         <div class="price">
-                                            <span>$98.00</span>
+                                            <span>$<?php echo $row['price']; ?></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
             </div>
         </section>
@@ -82,4 +91,6 @@
             </div>
         </div>
     </main>
-     <?php include('footer.php'); ?>
+     <?php include('footer.php');
+     
+     ?>
