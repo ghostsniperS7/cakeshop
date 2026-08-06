@@ -60,14 +60,15 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <i class="fas fa-fw fa-box-open"></i>
+
+                    <span>Product</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="buttons.php">Buttons</a>
-                        <a class="collapse-item" href="cards.php">Cards</a>
+                        <h6 class="collapse-header">Products Pages:</h6>
+                        <a class="collapse-item" href="addpro.php">Add Product</a>
+                        <a class="collapse-item" href="editpro.php">Veiw Products</a>
                     </div>
                 </div>
             </li>
@@ -78,25 +79,27 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                    <i class="fas fa-fw fa-list-ul"></i>
+                    <span>Category</span>
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.php">Login</a>
-                        <a class="collapse-item" href="register.php">Register</a>
-                        <a class="collapse-item" href="forgot-password.php">Forgot Password</a>
-                        <div class="collapse-divider"></div>
+                        <h6 class="collapse-header">Categories Pages:</h6>
+                        <!-- <div class="collapse-divider"></div> -->
                         <a class="collapse-item" href="addcat.php">Add Category</a>
-                        <a class="collapse-item" href="addpro.php">Add Product</a>
-                        <a class="collapse-item" href="editpro.php">Veiw Products</a>
+
                         <a class="collapse-item" href="editcat.php">Veiw Categories</a>
                     </div>
                 </div>
             </li>
 
+                        <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="Users.php">
+                    <i class="fas fa-fw fa-users"></i>
 
+                    <span>Users</span></a>
+            </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
