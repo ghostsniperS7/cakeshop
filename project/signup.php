@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     include('../dashboard/connect.php');
  include('header.php'); ?>
 
@@ -11,7 +11,7 @@
                         <div class="col-xxl-12">
                             <!-- Hero Caption -->
                             <div class="hero-caption hero-caption2">
-                                <h2>Contact Us</h2>
+                                <h2>Sign Up</h2>
                             </div>
                         </div>
                     </div>
@@ -24,36 +24,43 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="contact-title">Get in Touch</h2>
+                        <h2 class="contact-title">Sign Up</h2>
                     </div>
                     <div class="col-lg-8">
-                        <form class="form-contact contact_form" method="post">
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <textarea class="form-control w-100 text-white" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder=" Enter Message"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <input class="form-control valid text-white" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <input class="form-control valid text-white" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="form-group">
-                                        <input class="form-control text-white" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder="Enter Subject">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group mt-3">
-                                <button type="submit" name="btn" class="button button-contactForm btn_1">Send</button>
-                            </div>
-                        </form>
+<form class="form-contact contact_form" method="post">
+    <div class="row">
+        <div class="col-12">
+        </div>
+        <!-- Name Field -->
+        <div class="col-sm-6">
+            <div class="form-group">
+                <input class="form-control valid text-white" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder="Enter your name" required>
+            </div>
+        </div>
+        <!-- Email Field -->
+        <div class="col-sm-6">
+            <div class="form-group">
+                <input class="form-control valid text-white" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder="Email" required>
+            </div>
+        </div>
+        <!-- Password Field (Sahi class: col-sm-6) -->
+        <div class="col-sm-6">
+            <div class="form-group">
+                <input class="form-control text-white" name="password" id="password" type="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Password'" placeholder="Enter Password" required>
+            </div>
+        </div>
+        <!-- Phone Field -->
+        <div class="col-sm-6">
+            <div class="form-group">
+                <input class="form-control text-white" name="phone" id="phone" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Phone'" placeholder="Enter Phone" required>
+            </div>
+        </div>
+    </div>
+    <div class="form-group mt-3">
+        <button type="submit" name="btn" class="button button-contactForm btn_1">Signup</button>
+    </div>
+</form>
+
                     </div>
                     <div class="col-lg-3 offset-lg-1">
                         <div class="media contact-info">
@@ -88,14 +95,14 @@
     if(isset($_POST['btn'])){
         $name = $_POST['name'];
         $email = $_POST['email'];
-        $subject = $_POST['subject'];
-        $message = $_POST['message'];
+        $password = $_POST['password'];
+        $phone = $_POST['phone'];
 
-        $query = "INSERT INTO `contact_messages`(`name`, `email`, `subject`, `message`) VALUES ('$name','$email','$subject','$message')";
+        $query = "INSERT INTO `users`(`full_name`, `email`, `password`, `phone`) VALUES ('$name','$email','$password','$phone')";
         $result = mysqli_query($con, $query);
 
         if ($result) {
-    echo "<script>alert('Message sent successfully!');</script>";
+    echo "<script>alert('User Registered Successfully!');</script>";
 } else {
     echo "<script>alert('Error: " . $query . "<br>" . $con->error . "');</script>";
 }
