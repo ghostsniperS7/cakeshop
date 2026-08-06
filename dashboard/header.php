@@ -90,7 +90,8 @@
                         <div class="collapse-divider"></div>
                         <a class="collapse-item" href="addcat.php">Add Category</a>
                         <a class="collapse-item" href="addpro.php">Add Product</a>
-                        <a class="collapse-item" href="editpro.php">Edit Product</a>
+                        <a class="collapse-item" href="editpro.php">Veiw Products</a>
+                        <a class="collapse-item" href="editcat.php">Veiw Categories</a>
                     </div>
                 </div>
             </li>
