@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="body-bg">
     <header>
@@ -43,7 +44,7 @@
                                         <a href="index.php"><img src="assets/img/logo/logo.png" alt="" fetchpriority="high" decoding="sync"></a>
                                     </div>
                                     <div class="header-info-right d-none d-lg-block">
-                                        <a href="#" class="btn_2">Call Us: +10 783 346 4378</a>
+                                        <a href="cart.php"><i class="fas fa-shopping-cart text-white" style="font-size: 20px;"></i></a>
                                     </div>
                                 </div>
                             </div>
