@@ -1,12 +1,6 @@
 <?php
 include('../dashboard/connect.php');
 include('header.php');
-if (isset($_GET['cartid'])) {
-    $cart_id = $_GET['cartid'];
-    $query = "SELECT * FROM `products` WHERE product_id = '$cart_id'";
-    $result = mysqli_query($con, $query);
-    $row = mysqli_fetch_assoc($result);
-}
 ?>
 <style>
     .cart-item {
@@ -65,6 +59,16 @@ if (isset($_GET['cartid'])) {
         <div class="col-md-8">
             <h3 class="text-white">Your Cart</h3>
 
+            <?php
+            $total = 0;
+            if (isset($_SESSION['cart'])) {
+    foreach ($_SESSION['cart'] as $id) {
+        $query = "SELECT * FROM `products` WHERE `product_id` = '$id'";
+        $result = mysqli_query($con, $query);
+        $row = mysqli_fetch_assoc($result);
+
+            ?>
+
             <!-- Cart Item 1 -->
             <div class="cart-item">
                 <div class="d-flex">
@@ -76,7 +80,13 @@ if (isset($_GET['cartid'])) {
                 </div>
                 <span class="text-white">$<?php echo $row['price']; ?></span>
             </div>
+                    <?php
+        
+            }
+}
+?>
         </div>
+
 
         <!-- Cart Summary -->
         <div class="col-md-4">

@@ -1,4 +1,6 @@
-﻿<?php include('header.php'); ?>
+﻿<?php
+include('header.php');
+?>
 
 <main>
     <!--? Hero Area Start-->
@@ -36,7 +38,7 @@
                                     <a href="#"><img src="../dashboard/img/<?php echo $row['image']; ?>" alt="" fetchpriority="high" decoding="sync"></a>
 <div class="img-cap">
     <span>
-        <a href="cart.php?cartid=<?php echo $row['product_id']; ?>" style="color: inherit; text-decoration: none; display: block; width: 100%; height: 100%;">
+        <a href="add_to_cart.php?cartid=<?php echo $row['product_id']; ?>" style="color: inherit; text-decoration: none; display: block; width: 100%; height: 100%;">
             Add to cart
         </a>
     </span>
