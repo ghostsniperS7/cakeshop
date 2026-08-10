@@ -65,8 +65,8 @@ include('header.php');
     foreach ($_SESSION['cart'] as $id) {
         $query = "SELECT * FROM `products` WHERE `product_id` = '$id'";
         $result = mysqli_query($con, $query);
-        $row = mysqli_fetch_assoc($result);
-
+        if($row = mysqli_fetch_assoc($result)){
+            $total += $row['price'];
             ?>
 
             <!-- Cart Item 1 -->
@@ -78,10 +78,10 @@ include('header.php');
                         <p class="mb-0 text-white">1 item</p>
                     </div>
                 </div>
-                <span class="text-white">$<?php echo $row['price']; ?></span>
+                <span class="text-white">$<?php echo number_format($row['price'], 2); ?></span>
             </div>
                     <?php
-        
+        }
             }
 }
 ?>
@@ -95,7 +95,7 @@ include('header.php');
                 <ul class="list-unstyled">
                     <li class="d-flex justify-content-between">
                         <span>Subtotal:</span>
-                        <span>$45.98</span>
+                        <span>$<?php echo number_format($total, 2); ?></span>
                     </li>
                     <li class="d-flex justify-content-between">
                         <span>Shipping:</span>
@@ -103,7 +103,7 @@ include('header.php');
                     </li>
                     <li class="d-flex justify-content-between">
                         <span class="total-price">Total:</span>
-                        <span class="total-price">$50.98</span>
+                        <span class="total-price">$<?php echo number_format($total + 5.00, 2); ?></span>
                     </li>
                 </ul>
                 <button class="btn btn-checkout" disabled>Proceed to Checkout</button>
