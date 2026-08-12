@@ -1,11 +1,22 @@
 <?php
 session_start();
-$id = $_GET['cartid'];
-if(!isset($_SESSION['cart'])) {
+$id = $_GET['cartId'];
+
+if(!isset($_SESSION['cart'])){
     $_SESSION['cart'] = [];
 }
- $_SESSION['cart'][] = $id;
- header("Location: cakes.php");
 
- exit();
+if(isset($_SESSION['cart'][$id])){
+    $_SESSION['cart'][$id] ++;
+    
+    // $_SESSION['cart'][$id] = $_SESSION['cart'][$id] + 1;
+}
+else{
+    $_SESSION['cart'][$id] = 1;
+}
+
+header("Location: cart.php");
+
+exit();
+
 ?>

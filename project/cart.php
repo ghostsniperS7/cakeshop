@@ -61,12 +61,14 @@ include('header.php');
 
             <?php
             $total = 0;
+            $subtotal = 0;
             if (isset($_SESSION['cart'])) {
-    foreach ($_SESSION['cart'] as $id) {
+    foreach ($_SESSION['cart'] as $id => $quantity) {
         $query = "SELECT * FROM `products` WHERE `product_id` = '$id'";
         $result = mysqli_query($con, $query);
         if($row = mysqli_fetch_assoc($result)){
-            $total += $row['price'];
+            $item_subtotal = $row['price'] * $quantity;
+            $total += $item_subtotal;
             ?>
 
             <!-- Cart Item 1 -->
