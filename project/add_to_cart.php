@@ -9,7 +9,6 @@ if(!isset($_SESSION['cart'])){
 if(isset($_SESSION['cart'][$id])){
     $_SESSION['cart'][$id] ++;
     
-    // $_SESSION['cart'][$id] = $_SESSION['cart'][$id] + 1;
 }
 else{
     $_SESSION['cart'][$id] = 1;
