@@ -95,16 +95,19 @@ include('header.php');
             $_SESSION['role'] = $row['role'];
 
             if ($row['role'] === 'admin') {
-                header("Location: ../dashboard/index.php");
-                exit();
+                echo "<script>window.location.href='../dashboard/index.php';</script>";
+                 echo "<script>alert('Login successful!');</script>";
+                
             } else {
-                header("Location: index.php");
-                exit();
+            echo "<script>window.location.href='index.php';</script>";
+                // header("Location: index.php");
+                //  echo "<script>alert('Invalid email or password!');</script>";
+                
             }
-            echo "<script>alert('Login successful!');</script>";
-        } else {
-            echo "<script>alert('Invalid email or password!');</script>";
-        }
+
+            exit();
+           
+        } 
 
     }
     ?>
