@@ -68,6 +68,8 @@ session_start();
                                             <li><a href="blog.php">Blog</a></li>
                                             <li><a href="contact.php">Contact</a></li>
                                             <li><a href="signup.php">Signup</a></li>
+                                            <li><a href="login.php">Login</a></li>
+                                            <li><a href="logout.php">Logout</a></li>
                                         </ul>
                                     </nav>
                                 </div>
