@@ -1,6 +1,6 @@
 <?php
 session_start();
-$id = $_GET['cartId'];
+$id = $_GET['cartid'];
 
 if(!isset($_SESSION['cart'])){
     $_SESSION['cart'] = [];
