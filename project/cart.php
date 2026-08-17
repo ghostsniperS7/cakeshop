@@ -72,22 +72,27 @@ include('header.php');
             ?>
 
             <!-- Cart Item 1 -->
-            <div class="cart-item">
-                <div class="d-flex">
-                    <img src="../dashboard/img/<?php echo $row['image']; ?>" alt="Product" class="product-img me-3">
-                    <div>
-                        <h6 class="text-white"><?php echo $row['product_name']; ?></h6>
-                        <p class="mb-0 text-white">1 item</p>
-                    </div>
-                </div>
-                <span class="text-white">$<?php echo number_format($row['price'], 2); ?></span>
-            </div>
+<div class="cart-item">
+    <div class="d-flex align-items-center">
+        <img src="../dashboard/img/<?php echo $row['image']; ?>" alt="Product" class="product-img me-3">
+        <div>
+            <h6 class="text-white mb-1"><?php echo $row['product_name']; ?></h6>
+            <p class="mb-0 text-white-50 small"><?php echo $quantity; ?> item(s)</p>
+        </div>
+    </div>
+    <span class="text-white fw-bold">$<?php echo number_format($item_subtotal, 2); ?></span>
+    <a href="increase.php?id=<?php echo $row['product_id']; ?>" class="btn btn-danger">+</a>
+    <a href="decrease.php?id=<?php echo $row['product_id']; ?>" class="btn btn-danger">-</a>
+    <a href="remove.php?removeid=<?php echo $row['product_id']; ?>" class="btn btn-danger">Remove</a>
+</div>
                     <?php
         }
             }
 }
 ?>
         </div>
+
+
 
 
         <!-- Cart Summary -->
