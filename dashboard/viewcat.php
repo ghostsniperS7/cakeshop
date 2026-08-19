@@ -1,6 +1,6 @@
-<?php 
-include('connect.php'); 
-include('header.php'); 
+<?php
+include('connect.php');
+include('header.php');
 ?> 
 
 <div class="container-fluid mt-4"> 

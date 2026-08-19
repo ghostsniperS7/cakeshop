@@ -1,5 +1,5 @@
 <?php
-include('connect.php'); 
+include('connect.php');
 include('header.php');
 
 if(isset($_GET['id'])){

@@ -97,10 +97,10 @@ include('header.php');
             $_SESSION['role'] = $row['role'];
 
             if ($row['role'] === 'admin') {
-                header("Location: ../dashboard/index.php");
+                echo "<script>window.location.href = '../dashboard/index.php';</script>";
                 exit();
             } else {
-                header("Location: index.php");
+                echo "<script>window.location.href = 'index.php';</script>";
                 exit();
             }
         } else {
