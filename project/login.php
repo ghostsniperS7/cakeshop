@@ -92,6 +92,8 @@ include('header.php');
             $row = mysqli_fetch_assoc($result);
             $_SESSION['id'] = $row['user_id'];
             $_SESSION['name'] = $row['full_name'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['phone'] = $row['phone'];
             $_SESSION['role'] = $row['role'];
 
             if ($row['role'] === 'admin') {

@@ -1,8 +1,10 @@
 <?php 
 include("header.php");
-
+if(!isset($_SESSION['id'])) {
+    echo "<script>alert('Please login to proceed to checkout.'); window.location.href='login.php';</script>";
+    exit();
+}
 ?>
-
 <style>
     /* Dark Theme form styling */
     .form-control, .custom-select {
@@ -51,20 +53,8 @@ include("header.php");
 
                   <!--firstName-->
                   <div class="md-form ">
-                    <input type="text" id="firstName" class="form-control">
+                    <input value="<?php echo isset($_SESSION['name']) ? htmlspecialchars($_SESSION['name']) : ''; ?>" type="text" id="firstName" class="form-control" required>
                     <label for="firstName" class="">First name</label>
-                  </div>
-
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-md-6 mb-2">
-
-                  <!--lastName-->
-                  <div class="md-form">
-                    <input type="text" id="lastName" class="form-control">
-                    <label for="lastName" class="">Last name</label>
                   </div>
 
                 </div>
@@ -73,17 +63,18 @@ include("header.php");
               </div>
               <!--Grid row-->
 
-              <!--Username-->
+              <!--Phone-->
               <div class="md-form input-group pl-0 mb-5">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" id="basic-addon1">@</span>
+                  <span class="input-group-text" id="basic-addon1"></span>
                 </div>
-                <input type="text" class="form-control py-0" placeholder="Username" aria-describedby="basic-addon1">
+                <input value="<?php echo isset($_SESSION['phone']) ? htmlspecialchars($_SESSION['phone']) : ''; ?>" type="text" class="form-control py-0" placeholder="Phone" aria-describedby="basic-addon1">
+                <label for="phone" class="">Phone</label>
               </div>
 
               <!--email-->
               <div class="md-form mb-5">
-                <input type="text" id="email" class="form-control" placeholder="youremail@example.com">
+                <input value="<?php echo isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email']) : ''; ?>" type="text" id="email" class="form-control" placeholder="youremail@example.com">
                 <label for="email" class="">Email (optional)</label>
               </div>
 
@@ -106,7 +97,7 @@ include("header.php");
                 <div class="col-lg-4 col-md-12 mb-4">
 
                   <label for="country">Country</label>
-                  <select class="custom-select d-block w-100" id="country" required>
+                  <select class="custom-select w-100" id="country" required>
                     <option value="">Choose...</option>
                     <option>United States</option>
                   </select>
@@ -121,7 +112,7 @@ include("header.php");
                 <div class="col-lg-4 col-md-6 mb-4">
 
                   <label for="state">State</label>
-                  <select class="custom-select d-block w-100" id="state" required>
+                  <select class="custom-select w-100" id="state" required>
                     <option value="">Choose...</option>
                     <option>California</option>
                   </select>
@@ -171,7 +162,7 @@ include("header.php");
                 </div>
                 <div class="custom-control custom-radio">
                   <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
-                  <label class="custom-control-label" for="paypal">Paypal</label>
+                  <label class="custom-control-label" for="paypal">Cash on Delivery</label>
                 </div>
               </div>
               <div class="row">

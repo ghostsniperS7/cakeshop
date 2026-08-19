@@ -113,7 +113,14 @@ include('header.php');
                         <span class="total-price">$<?php echo number_format($total + 5.00, 2); ?></span>
                     </li>
                 </ul>
-                <button class="btn btn-checkout" disabled>Proceed to Checkout</button>
+
+                <?php
+                if(isset($_SESSION['id'])) {
+                    echo '<a href="checkout.php" class="btn btn-checkout">Proceed to Checkout</a>';
+                } else {
+                    echo '<a href="login.php" class="btn btn-checkout" disabled>login to Checkout</a>';
+                }
+                ?>
             </div>
         </div>
     </div>
