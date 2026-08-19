@@ -47,7 +47,18 @@ session_start();
                                         <a href="index.php"><img src="assets/img/logo/logo.png" alt="" fetchpriority="high" decoding="sync"></a>
                                     </div>
                                     <div class="header-info-right d-none d-lg-block">
-                                        <a href="cart.php"><i class="fas fa-shopping-cart text-white" style="font-size: 20px;"></i></a>
+                                    <?php
+                                    $cart_count = 0;
+                                    if (isset($_SESSION['cart'])) {
+                                        foreach ($_SESSION['cart'] as $quantity) {
+                                            $cart_count += $quantity;
+                                        }
+                                    }
+                                    ?>
+                                        <a href="cart.php" style="position: relative;">
+                                            <i class="fas fa-shopping-cart" style="font-size: 20px;"></i>
+                                            <span class="badge badge-pill badge-danger"><?php echo $cart_count; ?></span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
