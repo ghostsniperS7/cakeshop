@@ -60,16 +60,20 @@ session_start();
                             <div class="col-xl-12">
                                 <!-- Main-menu -->
                                 <div class="main-menu d-none d-lg-block text-center">
-                                    <nav> 
+                                    <nav>
                                         <ul id="navigation">
                                             <li><a href="index.php">Home</a></li>
                                             <li><a href="cakes.php">Cakes</a></li>
                                             <li><a href="about.php">About</a></li>
                                             <li><a href="blog.php">Blog</a></li>
                                             <li><a href="contact.php">Contact</a></li>
-                                            <li><a href="signup.php">Signup</a></li>
-                                            <li><a href="login.php">Login</a></li>
-                                            <li><a href="logout.php">Logout</a></li>
+                                            <?php if (isset($_SESSION['name'])): ?>
+                                                <li><span class="user-name" style="color: white; padding: 15px 0; display: inline-block;">Welcome, <?php echo htmlspecialchars($_SESSION['name']); ?></span></li>
+                                                <li><a href="logout.php">Logout</a></li>
+                                            <?php else: ?>
+                                                <li><a href="signup.php">Signup</a></li>
+                                                <li><a href="login.php">Login</a></li>
+                                            <?php endif; ?>
                                         </ul>
                                     </nav>
                                 </div>
