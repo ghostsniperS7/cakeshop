@@ -63,33 +63,33 @@ include('header.php');
             $total = 0;
             $subtotal = 0;
             if (isset($_SESSION['cart'])) {
-    foreach ($_SESSION['cart'] as $id => $quantity) {
-        $query = "SELECT * FROM `products` WHERE `product_id` = '$id'";
-        $result = mysqli_query($con, $query);
-        if($row = mysqli_fetch_assoc($result)){
-            $item_subtotal = $row['price'] * $quantity;
-            $total += $item_subtotal;
+                foreach ($_SESSION['cart'] as $id => $quantity) {
+                    $query = "SELECT * FROM `products` WHERE `product_id` = '$id'";
+                    $result = mysqli_query($con, $query);
+                    if ($row = mysqli_fetch_assoc($result)) {
+                        $item_subtotal = $row['price'] * $quantity;
+                        $total += $item_subtotal;
             ?>
 
-            <!-- Cart Item 1 -->
-<div class="cart-item">
-    <div class="d-flex align-items-center">
-        <img src="../dashboard/img/<?php echo $row['image']; ?>" alt="Product" class="product-img me-3">
-        <div>
-            <h6 class="text-white mb-1"><?php echo $row['product_name']; ?></h6>
-            <p class="mb-0 text-white-50 small"><?php echo $quantity; ?> item(s)</p>
-        </div>
-    </div>
-    <span class="text-white fw-bold">$<?php echo number_format($item_subtotal, 2); ?></span>
-    <a href="increase.php?id=<?php echo $row['product_id']; ?>" class="btn btn-danger">+</a>
-    <a href="decrease.php?id=<?php echo $row['product_id']; ?>" class="btn btn-danger">-</a>
-    <a href="remove.php?removeid=<?php echo $row['product_id']; ?>" class="btn btn-danger">Remove</a>
-</div>
-                    <?php
-        }
+                        <!-- Cart Item 1 -->
+                        <div class="cart-item">
+                            <div class="d-flex align-items-center">
+                                <img src="../dashboard/img/<?php echo $row['image']; ?>" alt="Product" class="product-img me-3">
+                                <div>
+                                    <h6 class="text-white mb-1"><?php echo $row['product_name']; ?></h6>
+                                    <p class="mb-0 text-white-50 small"><?php echo $quantity; ?> item(s)</p>
+                                </div>
+                            </div>
+                            <span class="text-white fw-bold">$<?php echo number_format($item_subtotal, 2); ?></span>
+                            <a href="increase.php?id=<?php echo $row['product_id']; ?>" class="btn btn-danger">+</a>
+                            <a href="decrease.php?id=<?php echo $row['product_id']; ?>" class="btn btn-danger">-</a>
+                            <a href="remove.php?removeid=<?php echo $row['product_id']; ?>" class="btn btn-danger">Remove</a>
+                        </div>
+            <?php
+                    }
+                }
             }
-}
-?>
+            ?>
         </div>
 
 
@@ -115,7 +115,7 @@ include('header.php');
                 </ul>
 
                 <?php
-                if(isset($_SESSION['id'])) {
+                if (isset($_SESSION['id'])) {
                     echo '<a href="checkout.php" class="btn btn-checkout">Proceed to Checkout</a>';
                 } else {
                     echo '<a href="login.php" class="btn btn-checkout" disabled>login to Checkout</a>';
