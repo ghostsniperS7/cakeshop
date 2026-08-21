@@ -1,6 +1,7 @@
 <?php
 include('../dashboard/connect.php');
 include("header.php");
+// session_start();
 if(!isset($_SESSION['id'])) {
     echo "<script>alert('Please login to proceed to checkout.'); window.location.href='login.php';</script>";
     exit();
@@ -153,7 +154,7 @@ $cart_count = array_sum($_SESSION['cart'] ?? []);
             <!-- Billing Form Column -->
             <div class="col-lg-8 mb-4">
                 <div class="checkout-card">
-                    <form id="checkoutForm" method="POST" action="checkout.php" novalidate>
+                    <form method="post">
                         <!-- Contact Information -->
                         <h5 class="section-title">Contact Information</h5>
                         <div class="row">
@@ -190,7 +191,7 @@ $cart_count = array_sum($_SESSION['cart'] ?? []);
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <label for="country">Country <span class="text-danger">*</span></label>
-                                <div class="select-wrapper">
+                                <div>
                                     <select class="form-control custom-select" id="country" name="country" required>
                                         <option value="">Choose...</option>
                                         <option value="United States" selected>United States</option>
@@ -205,7 +206,7 @@ $cart_count = array_sum($_SESSION['cart'] ?? []);
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label for="state">State <span class="text-danger">*</span></label>
-                                <div class="select-wrapper">
+                                <div>
                                     <select class="form-control custom-select" id="state" name="state" required>
                                         <option value="">Choose...</option>
                                         <option value="California">California</option>
@@ -218,11 +219,11 @@ $cart_count = array_sum($_SESSION['cart'] ?? []);
                                 </div>
                                 <div class="invalid-feedback">Please select a state.</div>
                             </div>
-                            <div class="col-md-4 mb-3">
+                            <!-- <div class="col-md-4 mb-3">
                                 <label for="zip">ZIP Code <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control" id="zip" name="zip" placeholder="90210" required autocomplete="postal-code" pattern="[0-9]{5}(-[0-9]{4})?">
                                 <div class="invalid-feedback">Please enter a valid ZIP code.</div>
-                            </div>
+                            </div> -->
                         </div>
 
                         <hr class="section-divider">
@@ -243,15 +244,15 @@ $cart_count = array_sum($_SESSION['cart'] ?? []);
                         <h5 class="section-title">Payment Method</h5>
                         <div class="payment-methods">
                             <label class="radio-wrapper">
-                                <input type="radio" name="payment_method" value="credit" id="payment_credit" required>
+                                <input type="radio" name="payment_method" value="credit" name="payment_method" id="payment_credit" required>
                                 <span>Credit Card</span>
                             </label>
                             <label class="radio-wrapper">
-                                <input type="radio" name="payment_method" value="debit" id="payment_debit" required>
+                                <input type="radio" name="payment_method" value="debit" name="payment_method" id="payment_debit" required>
                                 <span>Debit Card</span>
                             </label>
                             <label class="radio-wrapper">
-                                <input type="radio" name="payment_method" value="cod" id="payment_cod" required>
+                                <input type="radio" name="payment_method" value="cod" name="payment_method" id="payment_cod" required>
                                 <span>Cash on Delivery</span>
                             </label>
                         </div>
@@ -287,7 +288,7 @@ $cart_count = array_sum($_SESSION['cart'] ?? []);
                         </div>
 
                         <hr class="section-divider">
-                        <button type="submit" class="submit-btn" id="submitBtn">
+                        <button type="submit" name="btn" class="submit-btn" >
                             <i class="fas fa-lock mr-2"></i>Complete Order - $<?= number_format($grand_total, 2) ?>
                         </button>
                     </form>
@@ -407,4 +408,22 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<?php include("footer.php"); ?>
+    <?php
+    include('footer.php');
+    if(isset($_POST['btn'])){
+        $user_id = $_SESSION['id'];
+        $address = $_POST['address'] . ', ' . $_POST['address2'] . ', ' . $_POST['state'] . ', ' . $_POST['country'];
+        $payment_method = $_POST['payment_method'];
+        // $total_amount = $_POST['total_amount'];
+
+        $query = "INSERT INTO `orders`(`user_id`, `total_amount`, `order_status`, `payment_status`,`address`, `payment_method`) VALUES ('$user_id', '$grand_total', 'Pending', 'Pending', '$address', '$payment_method')";
+        $result = mysqli_query($con, $query);
+
+        if ($result) {
+    echo "<script>alert('Order placed successfully!');</script>";
+} else {
+    echo "<script>alert('Error: " . $query . "<br>" . $con->error . "');</script>";
+}
+
+    }
+    ?>
