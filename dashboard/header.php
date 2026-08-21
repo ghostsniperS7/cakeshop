@@ -103,6 +103,12 @@ session_start();
 
                     <span>Users</span></a>
             </li>
+                        <li class="nav-item">
+                <a class="nav-link" href="order_details.php">
+                    <i class="fas fa-fw fa-users"></i>
+
+                    <span>Order Details</span></a>
+            </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
